@@ -17,5 +17,8 @@ public class HomeController {
     public ResponseEntity<?> home() {
         return new ResponseEntity<>("Hello World", HttpStatus.OK);
     }
-
+    @GetMapping("/cart")
+    public ResponseEntity<?> cart() {
+        return new ResponseEntity<>("Hello ", HttpStatus.OK);
+    }
 }

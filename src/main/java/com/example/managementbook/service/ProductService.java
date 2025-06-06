@@ -17,20 +17,20 @@ public class ProductService {
     private CategoryRepository categoryRepository;
 
 
-    public List<ProductDTO> getAllProducts() {
-        return productRepository.findAll().stream()
-                .map(product -> {
-                    ProductDTO dto = new ProductDTO();
-                    dto.setId(product.getId());
-                    dto.setName(product.getName());
-                    dto.setPrice(product.getPrice());
-                    dto.setStock(product.getStock());
-                    dto.setStatus(product.getStatus());
-                    dto.setCategoryId(product.getCategory().getId());
-                    return dto;
-                })
-                .collect(Collectors.toList());
-    }
+//    public List<ProductDTO> getAllProducts() {
+//        return productRepository.findAll().stream()
+//                .map(product -> {
+//                    ProductDTO dto = new ProductDTO();
+//                    dto.setId(product.getId());
+//                    dto.setName(product.getName());
+//                    dto.setPrice(product.getPrice());
+//                    dto.setStock(product.getStock());
+//                    dto.setStatus(product.getStatus());
+//                    dto.setCategoryId(product.getCategory().getId());
+//                    return dto;
+//                })
+//                .collect(Collectors.toList());
+//    }
 
 
     public ProductDTO createProduct(ProductDTO productDTO) {
@@ -82,7 +82,6 @@ public class ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         product.setStatus(status);
         product = productRepository.save(product);
-
         ProductDTO dto = new ProductDTO();
         dto.setId(product.getId());
         dto.setName(product.getName());

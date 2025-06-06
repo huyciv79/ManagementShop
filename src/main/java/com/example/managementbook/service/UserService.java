@@ -25,21 +25,16 @@ public class UserService {
     public RegisterResponse register(RegisterRequest request) {
 
         User user = new User();
-        user.setFullname(request.getFullName());
+        user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setPhone(request.getPhone());
         user.setAddress(request.getAddress());
-
-
+        user.setStatus(request.getStatus());
         Role userRole = roleRepository.findByName("USER")
                 .orElseThrow(() -> new RuntimeException("Role USER not found"));
         user.setRoles(new HashSet<>(Set.of(userRole)));
-
-
         userRepository.save(user);
-
-
         return new RegisterResponse(user.getEmail(), "User registered successfully");
     }
 }
