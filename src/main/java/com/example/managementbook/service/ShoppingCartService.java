@@ -21,18 +21,22 @@ public class ShoppingCartService {
     private ProductRepository productRepository;
 
 
-    public List<ShoppingCartDTO> getAllCartsByUser(Long userId) {
-        return shoppingCartRepository.findByUserId(userId).stream()
-                .map(cart -> {
-                    ShoppingCartDTO dto = new ShoppingCartDTO();
-                    dto.setId(cart.getId());
-                    dto.setQuantity(cart.getQuantity());
-                    dto.setUserId(cart.getUser().getId());
-                    dto.setProductId(cart.getProduct().getId());
-                    return dto;
-                })
-                .collect(Collectors.toList());
-    }
+        public List<ShoppingCartDTO> getAllCartsByUser(Long userId) {
+            return shoppingCartRepository.findByUserId(userId).stream()
+                    .map(cart -> {
+                        ShoppingCartDTO dto = new ShoppingCartDTO();
+                        dto.setId(cart.getId());
+                        dto.setQuantity(cart.getQuantity());
+                        dto.setUserId(cart.getUser().getId());
+                        dto.setUserName(cart.getUser().getUsername());
+                        dto.setProductId(cart.getProduct().getId());
+                        dto.setProductName(cart.getProduct().getName());
+                        return dto;
+                    })
+                    .collect(Collectors.toList());
+        }
+
+
 
 
     public ShoppingCartDTO addProductToCart(ShoppingCartDTO cartDTO) {

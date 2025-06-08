@@ -9,5 +9,7 @@ public class ShoppingCartDTO {
     private Long id;
     private int quantity;
     private Long userId;
+    private String userName;
     private Long productId;
+    private String productName;
 }

@@ -13,17 +13,17 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
 
-    public List<CategoryDTO> getAllCategories() {
-        return categoryRepository.findAll().stream()
-                .map(category -> {
-                    CategoryDTO dto = new CategoryDTO();
-                    dto.setId(category.getId());
-                    dto.setName(category.getName());
-                    dto.setStatus(category.getStatus());
-                    return dto;
-                })
-                .collect(Collectors.toList());
-    }
+//    public List<CategoryDTO> getAllCategories() {
+//        return categoryRepository.findAll().stream()
+//                .map(category -> {
+//                    CategoryDTO dto = new CategoryDTO();
+//                    dto.setId(category.getId());
+//                    dto.setName(category.getName());
+//                    dto.setStatus(category.getStatus());
+//                    return dto;
+//                })
+//                .collect(Collectors.toList());
+//    }
 
 
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
