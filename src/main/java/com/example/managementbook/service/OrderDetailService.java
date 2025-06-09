@@ -11,7 +11,6 @@ public class OrderDetailService {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
 
-
     public List<OrderDetailDTO> getAllOrderDetailsByOrder(Long orderId) {
         return orderDetailRepository.findByOrderId(orderId).stream()
                 .map(detail -> {
