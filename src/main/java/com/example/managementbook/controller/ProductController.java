@@ -39,7 +39,7 @@ public class ProductController {
             @RequestParam String keyword,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int pageSize,
-            @RequestParam(defaultValue = "price") String sortField,
+            @RequestParam(defaultValue = "name") String sortField,
             @RequestParam(defaultValue = "asc") String sortOrder) {
         Sort sort = Sort.by(sortOrder.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC, sortField);
         Pageable pageable = PageRequest.of(page, pageSize, sort);

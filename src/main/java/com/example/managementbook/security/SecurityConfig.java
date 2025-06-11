@@ -35,7 +35,8 @@ public class SecurityConfig {
         return httpSecutiry.csrf(AbstractHttpConfigurer::disable).authenticationProvider(authenticationProvider()).authorizeHttpRequests(auth -> {
             auth
                     .requestMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
-                    .requestMatchers("/swagger-ui/**" , "/api-docs/**","/api/v1/home","/api/v1/auth/**","/api/v1/register").permitAll()
+                    .requestMatchers("/api/v1/admin/categories").hasAnyAuthority("ADMIN","MANAGER")
+                    .requestMatchers("/swagger-ui/**" , "/api-docs/**","/api/v1/home","/api/v1/auth/**").permitAll()
                     .anyRequest().authenticated();
         }).sessionManagement(auth->auth.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling(auth->auth.authenticationEntryPoint(jwtEntryPoint).accessDeniedHandler(customAscessDeniedHandler))
